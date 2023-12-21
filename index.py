@@ -1,4 +1,5 @@
-from flask import Flask, request, url_quote_plus
+from flask import Flask, request
+from urllib.parse import quote_plus
 import os
 
 app = Flask(__name__)
@@ -10,6 +11,10 @@ def trigger_code():
     time = request.args.get('time', '')
 
     if host and port and time:
+        host = quote_plus(host)
+        port = quote_plus(port)
+        time = quote_plus(time)
+        
         command = f'python3 udp.py -i{host} -p{port} -t{time} -th 10'
         os.system(command)
         return f'Code triggered with host={host}, port={port}, and time={time}'
