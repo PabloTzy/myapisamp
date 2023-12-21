@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, url_quote_plus
 import os
 
 app = Flask(__name__)
