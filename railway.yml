@@ -1,0 +1,11 @@
+version: 2
+services:
+  app:
+    name: my-python-app
+    dockerfile: Dockerfile
+    env:
+      - key: PORT
+        value: "8080"
+    http:
+      port: $PORT
+      
