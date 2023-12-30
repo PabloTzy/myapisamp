@@ -5,7 +5,10 @@ FROM python:3.8
 WORKDIR /app
 
 # Salin seluruh konten direktori saat ini ke dalam container di /app
-COPY --chown=user:group . /app
+COPY . /app
+
+# Set permissions menjadi 777 pada file atau direktori yang dibutuhkan
+RUN chmod -R 777 /app
 
 # Install semua paket yang diperlukan yang tercantum di requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
